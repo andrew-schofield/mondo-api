@@ -247,8 +247,7 @@ App.MondoAPI = (function()
         var url = "https://api.getmondo.co.uk/transactions";
         var data = {
             'expand[]': 'merchant',
-            account_id: accountId,
-            limit: 100,
+            account_id: accountId
             
         };
         
