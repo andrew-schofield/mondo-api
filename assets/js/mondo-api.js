@@ -230,7 +230,8 @@ App.MondoAPI = (function()
         App.Helpers.debugMessage(data);
         
         currentBalanceContainer.text(App.Helpers.formatCurrency(data.balance, data.currency));
-        spentContainer.text(App.Helpers.formatCurrency(data.spend_today, data.currency));
+        // make spend a normally positive number, however a net increase should result in a negative spend
+        spentContainer.text(App.Helpers.formatCurrency(data.spend_today * -1, data.currency));
     }
     
     
