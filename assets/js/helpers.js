@@ -49,6 +49,7 @@ App.Helpers = (function()
         currencySymbol['GBP'] = "£";
         currencySymbol['USD'] = "$";
         currencySymbol['EUR'] = "€";
+        currencySymbol['AUD'] = "AU$";
         
         if(amount < 0 && makePositive) {
             amount = amount * -1;
