@@ -64,12 +64,19 @@ App.Templates = (function()
      * @param string status
      * @param string amount
      */
-    function transation(transaction, transactionName, status, amount)
+    function transation(transaction, transactionName, status, amount, balance)
     {
-        // transation amount classes
-        var transactionAmountClasses = "transaction__amount";
+        var moneyOut = "";
+        var moneyIn = "";
+        var localCurrency = "";
+        if(transaction.local_currency !== transaction.currency) {
+            localCurrency = " (" + App.Helpers.formatCurrency(transaction.local_amount, transaction.local_currency, true) +")";
+        }
         if(transaction.amount > 0) {
-            transactionAmountClasses += " transaction__amount--positive";
+            moneyIn = amount;
+        }
+        else {
+            moneyOut = amount + localCurrency;
         }
         
         // transaction classes
@@ -82,12 +89,13 @@ App.Templates = (function()
         
         var transactionTemplate = [
             "<div class='" + transactionClasses + "'>",
-                merchantLogo(transaction),
                 "<div class='transaction__info'>",
                     "<div class='transaction__name'>" + transactionName + "</div>",
                     transactionStatus(status),
                 "</div>",
-                "<div class='" + transactionAmountClasses + "'>" + amount + "</div>",
+                "<div class='transaction__amount'>" + moneyOut + "</div>",
+                "<div class='transaction__amount transaction__amount--positive'>" + moneyIn + "</div>",
+                "<div>" + balance + "</div>",
             "</div>"
         ].join("\n");
         

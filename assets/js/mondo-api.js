@@ -265,6 +265,17 @@ App.MondoAPI = (function()
         
         // clear old transactions first
         transactionsContainer.empty();
+
+        transactionsContainer.append([
+            "<div class='transaction'>",
+                "<div class='transaction__info'>",
+                    "<div class='transaction__name'><b>Details</b></div>",
+                "</div>",
+                "<div class='transaction__amount'><b>Money Out</b></div>",
+                "<div class='transaction__amount transaction__amount--positive'><b>Money In</b></div>",
+                "<div><b>Balance</b></div>",
+            "</div>"
+        ].join("\n"));
         
         // reverse transactions so newest first
         data.transactions = data.transactions.reverse();
@@ -277,6 +288,7 @@ App.MondoAPI = (function()
             var transactionDate = App.Helpers.formatDateFromString(transaction.created);
             var transactionAmount = App.Helpers.formatCurrency(transaction.amount, transaction.currency, true);
             var transactionStatus = getTransactionStatus(transaction);
+            var transactionBalance = App.Helpers.formatCurrency(transaction.account_balance, "GBP", true)
             var transactionName = 'Mondo';
             if(transaction.merchant) {
                 transactionName = transaction.merchant.name;
@@ -293,7 +305,7 @@ App.MondoAPI = (function()
             }
             
             // transaction template
-            var transactionTemplate = App.Templates.transation(transaction, transactionName, transactionStatus, transactionAmount);
+            var transactionTemplate = App.Templates.transation(transaction, transactionName, transactionStatus, transactionAmount, transactionBalance);
             
             // append transaction
             transactionsContainer.append(transactionTemplate);
