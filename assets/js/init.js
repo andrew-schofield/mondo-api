@@ -2,7 +2,6 @@ var App = App || {};
 
 // start the app
 App.init = function () {
-    App.Map.init();
     App.MondoAPI.init();
 };
 

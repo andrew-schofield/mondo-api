@@ -266,9 +266,6 @@ App.MondoAPI = (function()
         // clear old transactions first
         transactionsContainer.empty();
         
-        // remove existing map markers
-        App.Map.deleteMarkers();
-        
         // reverse transactions so newest first
         data.transactions = data.transactions.reverse();
         
@@ -300,34 +297,6 @@ App.MondoAPI = (function()
             
             // append transaction
             transactionsContainer.append(transactionTemplate);
-            
-            // build info window for the map
-            var infoWindowTemplate = App.Templates.infoWindow(transactionName, transactionDate.stringWithTime, transactionAmount);
-            
-            // add transaction to the map
-            var lat = 0;
-            var lng = 0;
-            
-            if(transaction.merchant && transaction.merchant.address.latitude) {
-                lat = transaction.merchant.address.latitude;
-                lng = transaction.merchant.address.longitude;
-            }
-            
-            var showOnMap = true;
-            
-            if(lat === 0 || lng === 0) {
-                showOnMap = false;
-            }
-            
-            var payload = {
-                lat: lat,
-                lng: lng,
-                title: transactionName,
-                info: infoWindowTemplate,
-                timeout: key * 100,
-                showOnMap: showOnMap
-            }
-            App.Map.addMarker(payload);
         });
         
         //add click for transaction to show info window
