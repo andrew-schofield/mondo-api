@@ -5,7 +5,7 @@ App.MondoAPI = (function()
     // client variables
     var clientId = App.Cookies.readCookie("clientId");
     var clientSecret = App.Cookies.readCookie("clientSecret");
-    var redirectUri = 'https://andrew-schofield.github.io/mondo-api/';
+    var redirectUri = 'https://andrew-schofield.github.io/monzo-statement/';
     
     // auth variables
     var stateToken = App.Cookies.readCookie("stateToken");
