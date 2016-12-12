@@ -1,17 +1,14 @@
-# Mondo Dashboard
-Web based Mondo dashboard, [check it out here](http://martinblackburn.github.io/mondo-api/)
+# Monzo Web Statement
+Web based Monzo Statement, [check it out here](http://andrew-schofield.github.io/monzo-statement/), based on [Martin Blackburn's mondo-api](https://github.com/martinblackburn/mondo-api)
 
 ## Current features
 - Current balance
 - Spent today
-- List of transactions (latest 100)
-- Clicking a transaction to show the details on the map
-- Map of transactions
+- Full List of transactions
+- Money In, Money Out, Running Balance
 - Basic status (top-up, declined)
 - Mobile friendly
 
 ## Missing features
 - Showing transaction notes
-- Adding notes to a transactions
-- Showing feed items in the transaction list
 - Pagination
